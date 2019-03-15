@@ -1,9 +1,9 @@
 
--- If you don't want to make some specific user to member of any role and want to copy from a user privileges to another user you can use this function.
--- In the other way you can create a new role/user and make member of any role with INHERIT option.
--- Or you can use GRANT primary_user to secondary_user script to make role/user member of a role. 
+-- If you don't want to make some specific user to a member of any role and want to copy from a user privileges to another user you can use this function.
+-- In the other way you can create a new role/user and make a member of any role with INHERIT option.
+-- Or you can use GRANT primary_user to secondary_user script to make role/user a member of a role. 
 -- PS: This script will not work if user is inherited(one or more)
--- PS: This script will not revoke privileges of secondary user.  
+-- PS: This script will not revoke privileges of the secondary user.  
 
 CREATE OR REPLACE FUNCTION copy_user_privileges(__primary_user TEXT, __secondary_user TEXT)
 RETURNS VOID LANGUAGE plpgsql AS

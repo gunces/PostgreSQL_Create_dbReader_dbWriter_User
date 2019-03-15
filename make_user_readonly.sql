@@ -1,3 +1,8 @@
+-- Make your user a read-only user with this function. PostgreSQL not have any function or something else yet. 
+-- The sufficient way can be adding new options to CREATE ROLE script like READONLY and of course pg_roles should have a new 
+-- boolean column like ISREADONLY. 
+
+
 CREATE OR REPLACE FUNCTION make_user_readonly(__username TEXT)
 RETURNS VOID LANGUAGE plpgsql AS
 $$
