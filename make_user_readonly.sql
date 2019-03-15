@@ -33,4 +33,11 @@ BEGIN
 END;
 $$;
 
+
+--
+-- 
+-- Usage 
+--
 -- SELECT make_user_readonly('guncek');
+--
+--
