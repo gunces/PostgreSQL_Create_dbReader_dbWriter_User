@@ -33,6 +33,7 @@ BEGIN
 	select current_database() INTO cur_database;	
 	RAISE NOTICE 'Current Database: %', cur_database;
 
+	/*
 	EXECUTE 'REVOKE ALL ON DATABASE "'|| cur_database || '" from dbreader';
 	RAISE NOTICE 'REVOKE ALL ON DATABASE "%" from dbreader', cur_database;
 
@@ -51,6 +52,8 @@ BEGIN
 	-- EXECUTE 'REVOKE SELECT ON ALL TABLES IN SCHEMA '|| exclude_schemanames || ' FROM PUBLIC;';
 	-- RAISE NOTICE 'REVOKE SELECT ON ALL TABLES IN SCHEMA % FROM PUBLIC', exclude_schemanames ;
 
+	*/
+	
 	EXECUTE 'GRANT USAGE ON SCHEMA ' || schemanames || ' TO dbreader';
 	RAISE NOTICE 'GRANT USAGE ON SCHEMA % TO dbreader', schemanames;
 
