@@ -18,6 +18,9 @@ You can use ROLE for grouping your users therefore you give privileges only ROLE
 
 This four SQL files help you to do it.
 
+>The user/users that you want to make it as read/write should exists in database.
+
+
 ## Make user readonly
 
 First, run create_user_readonly.sql and make_user_readonly.sql SQL files in your database. You may copy them into database server. These SQL files will create functions you'll need.
