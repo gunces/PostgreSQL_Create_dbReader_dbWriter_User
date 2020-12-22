@@ -1,6 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS dba;
 
-CREATE OR REPLACE FUNCTION dba.dbf_create_writable_user()
+CREATE OR REPLACE FUNCTION dba.create_writable_user()
 RETURNS void 
 LANGUAGE PLPGSQL
 AS $$
@@ -47,4 +47,4 @@ BEGIN
 END;
 $$;
 
--- SELECT dtdba.dbf_create_writable_user();
+-- SELECT dba.create_writable_user();
