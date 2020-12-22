@@ -1,18 +1,19 @@
--- Kullanıcının dbreader'den inherit olmasını sağlar. 
--- dtdba.dbf_make_readonly() 
+CREATE SCHEMA IF NOT EXISTS dba;
 
-CREATE OR REPLACE FUNCTION dtdba.dbf_make_readonly(f_username text)
+CREATE OR REPLACE FUNCTION dba.dbf_make_readonly(f_username text)
     RETURNS void
     LANGUAGE 'plpgsql'
-
     COST 100
     VOLATILE 
 AS $BODY$
+
 DECLARE
+
 schemanames TEXT;
 ifexistsdbreader INT;
 usr_password TEXT;
 cur_database TEXT;
+
 BEGIN
 	IF NOT EXISTS(SELECT rolname FROM pg_catalog.pg_roles WHERE rolname='dbreader') THEN 
 		RAISE EXCEPTION 'First create dbreader role than execute dtdba.dbf_make_readonly(text) function';
@@ -24,6 +25,7 @@ BEGIN
 	RAISE NOTICE 'GRANT dbreader TO "%"', f_username;
 
 END;
+
 $BODY$;
 
 
