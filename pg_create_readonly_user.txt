@@ -1,22 +1,21 @@
--- dtdba.dbf_create_dbreader() ile dbreader kullanıcısı oluşturulur.
--- Fonksiyonun oluşturulacağı db üzerindeki tablo, sequence'ler için read yetkisi verilir.
+CREATE SCHEMA IF NOT EXISTS dba;
 
-CREATE SCHEMA IF NOT EXISTS dtdba;
-
-CREATE OR REPLACE FUNCTION dtdba.dbf_create_dbreader()
+CREATE OR REPLACE FUNCTION dba.dbf_create_dbreader()
     RETURNS void
     LANGUAGE 'plpgsql'
-
     COST 100
     VOLATILE 
 AS $BODY$
+
 DECLARE
 schemanames TEXT;
 exclude_schemanames TEXT;
 ifexistsdbreader INT;
 usr_password TEXT;
 cur_database TEXT;
+
 BEGIN
+
   IF NOT EXISTS(SELECT rolname FROM pg_catalog.pg_roles WHERE rolname='dbreader') THEN 
 	EXECUTE format('CREATE ROLE dbreader NOLOGIN');
 	RAISE NOTICE 'CREATE ROLE dbreader NOLOGIN';
@@ -68,6 +67,5 @@ BEGIN
 
 END;
 $BODY$;
-
 
 select dtdba.dbf_create_dbreader();
