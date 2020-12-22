@@ -1,6 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS dba;
 
-CREATE OR REPLACE FUNCTION dba.create_dbreader_user()
+CREATE OR REPLACE FUNCTION dba.create_user_readonly()
     RETURNS void
     LANGUAGE 'plpgsql'
     COST 100
@@ -21,12 +21,12 @@ BEGIN
 	SELECT string_agg(distinct '"' || schema_name || '"', ',') INTO schemanames 
 	  FROM information_schema.schemata 
 	 WHERE schema_name not like 'pg\_%'
-	   AND schema_name not in ('information_schema', 'dtdba');
+	   AND schema_name not in ('information_schema');
 
 	SELECT string_agg(distinct '"' || schema_name || '"', ',') INTO exclude_schemanames 
 	  FROM information_schema.schemata 
 	 WHERE schema_name like 'pg\_%'
-	   OR schema_name in ('information_schema', 'dtdba');
+	   OR schema_name in ('information_schema');
 
 	RAISE NOTICE 'All schemas: %', schemanames;	
 	
@@ -66,4 +66,4 @@ BEGIN
 END;
 $BODY$;
 
-select dba.create_dbreader();
+select dba.create_user_readonly();
