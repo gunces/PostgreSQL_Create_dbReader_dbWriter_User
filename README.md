@@ -7,7 +7,7 @@ You can find four functions here to response this requests and it allows you to 
 - create_user_readonly.sql
 - make_user_readonly.sql
 - create_dbwriter_user.sql
-- make_user_writable.sql
+- make_user_dbwriter.sql
 
 PostgreSQL has ROLE and USER concepts. Both of them is database USER but there is a main difference between them. When you create a USER, in default it has LOGIN privilege but ROLE doesn't have.
 
@@ -38,17 +38,17 @@ SELECT dba.make_user_readonly('<user name>');
 
 ## Make user writable
 
-Copy create_writable_user.sql and make_user_dbwriter.sql files into your database server and run in your database as bellow.
+Copy create_dbwriter_user.sql and make_user_dbwriter.sql files into your database server and run in your database as bellow.
 
 ```
 psql -h <host> -p <port> -d <database> -f create_dbwriter_user.sql
-psql -h <host> -p <port> -d <database> -f make_user_writable.sql
+psql -h <host> -p <port> -d <database> -f make_user_dbwriter.sql
 ```
 
 Now, you are ready to add your database USER into dbwriter ROLE. 
 
 ```
-SELECT dba.make_user_writable('<user name>');
+SELECT dba.make_user_dbwriter('<user name>');
 ```
 
 *PS: Some of funtions were created for workaround.*
