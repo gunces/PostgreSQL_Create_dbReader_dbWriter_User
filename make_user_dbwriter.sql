@@ -1,6 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS dba;
 
-CREATE OR REPLACE FUNCTION dba.make_user_writable(f_username TEXT)
+CREATE OR REPLACE FUNCTION dba.make_user_dbwriter(f_username TEXT)
 RETURNS void 
 LANGUAGE PLPGSQL
 AS $$
@@ -19,4 +19,4 @@ BEGIN
 END;
 $$;
 
--- SELECT dba.make_user_writable('<user name>');
+-- SELECT dba.make_user_dbwriter('<user name>');
